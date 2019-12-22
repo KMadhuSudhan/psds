@@ -14,7 +14,6 @@ import com.madhu.psds.trees.TreeNode;
 
 public class RangeSumBST {
     public static void main(String[] args) {
-
     }
 
     private static int rangeSumBST(TreeNode root, int L, int R) {
