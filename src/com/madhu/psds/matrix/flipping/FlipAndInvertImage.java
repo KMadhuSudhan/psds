@@ -1,4 +1,4 @@
-package com.madhu.psds.flipping;
+package com.madhu.psds.matrix.flipping;
 
 public class FlipAndInvertImage {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.madhu.psds.rangesumbst;
+package com.madhu.psds.trees.rangesumbst;
 
 import com.madhu.psds.trees.TreeNode;
 

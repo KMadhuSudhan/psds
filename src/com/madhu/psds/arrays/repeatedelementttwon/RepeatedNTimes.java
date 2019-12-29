@@ -1,4 +1,4 @@
-package com.madhu.psds.repeatedelementttwon;
+package com.madhu.psds.arrays.repeatedelementttwon;
 
 public class RepeatedNTimes {
     public static void main(String[] args) {

@@ -1,6 +1,9 @@
-package com.madhu.psds.robotreturnzero;
+package com.madhu.psds.arrays.robotreturnzero;
 
 public class JudgeCircle {
+    final static int COUNT = 10;
+
+
     public static void main(String[] args) {
         System.out.print(judgeCircle("UD"));
     }

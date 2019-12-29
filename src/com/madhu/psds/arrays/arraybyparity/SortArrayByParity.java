@@ -1,4 +1,4 @@
-package com.madhu.psds.arraybyparity;
+package com.madhu.psds.arrays.arraybyparity;
 
 public class SortArrayByParity {
     public static void main(String[] args) {

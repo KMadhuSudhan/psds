@@ -1,4 +1,4 @@
-package com.madhu.psds.oddvaluesmatrix;
+package com.madhu.psds.matrix.oddvaluesmatrix;
 
 public class OddValuesMatrixCount {
     public static void main(String[] args) {

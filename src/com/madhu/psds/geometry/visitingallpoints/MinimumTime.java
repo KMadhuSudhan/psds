@@ -1,4 +1,4 @@
-package com.madhu.psds.visitingallpoints;
+package com.madhu.psds.geometry.visitingallpoints;
 
 public class MinimumTime {
     public static void main(String args[]) {
