@@ -1,4 +1,4 @@
-package com.madhu.psds.matrix.toeplitzmatrix;
+package com.madhu.psds.matrix;
 
 public class ToeplitzMatrix {
     public static void main(String[] args) {
@@ -10,10 +10,11 @@ public class ToeplitzMatrix {
                 {73,72,53,86,23,40,65,20,51,7,18,74},
                 {62,73,72,53,86,23,40,65,20,51,7,18}
         };
-        System.out.print(isToeplitzMatrix(nums));
+        ToeplitzMatrix toeplitzMatrix = new ToeplitzMatrix();
+        System.out.print(toeplitzMatrix.isToeplitzMatrix(nums));
     }
 
-    private static boolean isToeplitzMatrix(int[][] matrix) {
+    public boolean isToeplitzMatrix(int[][] matrix) {
         int columns = matrix[0].length;
         int rows = matrix.length;
         boolean isToeplitz = true;

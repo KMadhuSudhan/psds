@@ -1,4 +1,6 @@
-package com.madhu.psds.number.selfdivingnumber;
+package com.madhu.psds.number;
+
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +8,12 @@ import java.util.List;
 public class SelfDividingNumbers {
 
     public static void main(String[] args) {
-        System.out.print(selfDividingNumbers(1, 22));
+
+        SelfDividingNumbers selfDividingNumbers = new SelfDividingNumbers();
+        System.out.print(selfDividingNumbers.selfDividingNumbers(1, 22));
     }
 
-    private static List<Integer> selfDividingNumbers(int left, int right) {
+    public List<Integer> selfDividingNumbers(int left, int right) {
         List<Integer> ans = new ArrayList();
         for (int n = left; n <= right; ++n) {
             if (selfDividing(n)) ans.add(n);
@@ -17,7 +21,7 @@ public class SelfDividingNumbers {
         return ans;
     }
 
-    public static boolean selfDividing(int x) {
+    private boolean selfDividing(int x) {
         int temp = x;
         while (x != 0) {
             int rem = x % 10;

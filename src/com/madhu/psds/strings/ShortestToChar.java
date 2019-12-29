@@ -1,15 +1,16 @@
-package com.madhu.psds.shortesttochar;
+package com.madhu.psds.strings;
 
 public class ShortestToChar {
 
     public static void main(String[] s) {
-        int[] distanceArray = shortestToChar("loveleetcode",'b');
+        ShortestToChar shortestToChar = new  ShortestToChar();
+        int[] distanceArray = shortestToChar.shortestToChar("loveleetcode",'b');
         System.out.println();
         for(int i=0;i<distanceArray.length;i++) {
             System.out.print(distanceArray[i] + " ");
         }
     }
-    private static int[] shortestToChar(String S, char C) {
+    public int[] shortestToChar(String S, char C) {
         char[] s = S.toCharArray();
         int l = s.length;
         int i = 0;

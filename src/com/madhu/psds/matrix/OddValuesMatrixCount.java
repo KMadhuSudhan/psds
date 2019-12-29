@@ -1,13 +1,14 @@
-package com.madhu.psds.matrix.oddvaluesmatrix;
+package com.madhu.psds.matrix;
 
 public class OddValuesMatrixCount {
     public static void main(String[] args) {
         int n = 2, m = 3;
         int[][] indices = new int[][]{{0, 1}, {1, 1}};
-        System.out.println(oddCells(n, m, indices));
+        OddValuesMatrixCount oddValuesMatrixCount = new OddValuesMatrixCount();
+        System.out.println(oddValuesMatrixCount.oddCells(n, m, indices));
     }
 
-    private static int oddCells(int n, int m, int[][] indices) {
+    public int oddCells(int n, int m, int[][] indices) {
         int length = indices.length;
         int i,j,k;
         int oddCount = 0;

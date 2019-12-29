@@ -1,14 +1,12 @@
-package com.madhu.psds.arrays.robotreturnzero;
+package com.madhu.psds.arrays;
 
 public class JudgeCircle {
-    final static int COUNT = 10;
-
-
     public static void main(String[] args) {
-        System.out.print(judgeCircle("UD"));
+        JudgeCircle judgeCircle = new JudgeCircle();
+        System.out.print(judgeCircle.judgeCircle("UD"));
     }
 
-    private static boolean judgeCircle(String moves) {
+    public boolean judgeCircle(String moves) {
         int x = 0, y = 0;
         for (char move : moves.toCharArray()) {
             if (move == 'U') y++;

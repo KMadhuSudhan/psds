@@ -1,11 +1,12 @@
-package com.madhu.psds.matrix.flipping;
+package com.madhu.psds.matrix;
 
 public class FlipAndInvertImage {
     public static void main(String[] args) {
         int[][] x = new int[][]{{1,1,0},{1,0,1},{0,0,0}};
-        System.out.print(flipAndInvertImage(x));
+        FlipAndInvertImage flipAndInvertImage = new FlipAndInvertImage();
+        System.out.print(flipAndInvertImage.flipAndInvertImage(x));
     }
-    private static int[][] flipAndInvertImage(int[][] x) {
+    public int[][] flipAndInvertImage(int[][] x) {
         int rows = x.length;
         int columns = x[0].length;
         int i,j,k;
