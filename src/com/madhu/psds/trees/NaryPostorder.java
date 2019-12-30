@@ -1,4 +1,4 @@
-package com.madhu.psds.trees.narypostorder;
+package com.madhu.psds.trees;
 
 import com.madhu.psds.trees.NaryTreeNode;
 import com.madhu.psds.trees.TreeNode;
