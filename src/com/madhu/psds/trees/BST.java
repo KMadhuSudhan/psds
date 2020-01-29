@@ -33,4 +33,10 @@ class BST {
         }
         return node;
     }
+    public void print(TreeNode node) {
+        if(node == null) return;
+        print(node.left);
+        System.out.print(" " + node.val + " ");
+        print(node.right);
+    }
 }
