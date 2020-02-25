@@ -54,6 +54,7 @@ public class SetMatrixZeros {
 
     public void setRowZero(int[][] matrix, int row, int columns) {
         for (int col = 0; col < columns; col++) {
+//            if(matrix[row][col] == '*' ) break;
             if(matrix[row][col] == 0 ) continue;
             matrix[row][col] = '*';
         }
@@ -61,6 +62,7 @@ public class SetMatrixZeros {
 
     public void setColumnZero(int[][] matrix, int column, int rows) {
         for (int row = 0; row < rows; row++) {
+//            if(matrix[row][column] == '*' ) break;
             if(matrix[row][column] == 0 ) continue;
             matrix[row][column] = '*';
         }
