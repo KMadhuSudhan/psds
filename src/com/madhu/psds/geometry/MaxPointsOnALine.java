@@ -2,6 +2,8 @@ package com.madhu.psds.geometry;
 //https://leetcode.com/problems/max-points-on-a-line/
 //149. Max Points on a Line
 
+import org.omg.CORBA.MARSHAL;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -9,21 +11,22 @@ import java.util.Set;
 
 public class MaxPointsOnALine {
     public static void main(String[] args) {
-        int[][] points = new int[][] {
-                {1,1},{3,2},{5,3},{4,1},{2,3},{1,4}
-        };
+//        int[][] points = new int[][]{
+//                {1, 1}, {3, 2}, {5, 3}, {4, 1}, {2, 3}, {1, 4}
+//        };
 //        int[][] points = new int[][] {
 //                {1,1},
 //                {1,1},
 //                {2,3}
 //        };
-//        int[][] points = new int[][] {
-//                {1,1},{2,1},{2,2},{1,4},{3,3}
-//        };
+        int[][] points = new int[][] {
+                {1,1},{2,1},{2,2},{1,4},{3,3}
+        };
         MaxPointsOnALine maxPointsOnALine = new MaxPointsOnALine();
         System.out.println(maxPointsOnALine.maxPoints(points));
     }
-//    public int maxPoints(int[][] coords) {
+
+    //    public int maxPoints(int[][] coords) {
 //        int length = coords.length;
 //        if(length == 1) return 1;
 //        if(length == 2) return 2;
@@ -42,41 +45,41 @@ public class MaxPointsOnALine {
 //        }
 //        return count;
 //    }
-    public int maxPoints(int[][] coords) {
-        int length = coords.length;
-        if(length == 1) return 1;
-        Map<Double,Set<Integer>> map = new HashMap<>();
-        double slope;
-        int infinityCount = 0;
-        for(int i=0;i<coords.length-1;i++) {
-            for(int j=i+1;j<coords.length;j++) {
-                if((coords[j][0] - coords[i][0]) == 0) {
-                    if(infinityCount == 0) {
-                        infinityCount = 2;
-                    } else {
-                        infinityCount++;
-                    }
+    public int maxPoints(int[][] points) {
+        // if points less than or equal 2 return length
+        if(points.length<=2)
+            return points.length;
+        int maxpoints=0;
+        int length = points.length-1;
+        for(int i=length;i>0;i--)
+        {
+            Map<Double,Integer> slopeMap = new HashMap<Double,Integer>();
+            int duplicates=0;
+            int max=0;
+            for( int j=0;j<i;j++)
+            {
+                int [] p1 = points[j];
+                int [] p2 = points[i];
+
+                if(p2[1]==p1[1] && p1[0]==p2[0]){
+                    duplicates++;
+                    continue;
                 }
-                slope = (double) (coords[j][1] - coords[i][1]) / (double) (coords[j][0] - coords[i][0]);
-                if(slope == -0.0) slope = Math.abs(slope);
-                if(map.get(slope) == null) {
-                    Set<Integer> set = new HashSet();
-                    set.add(i);
-                    set.add(j);
-                    map.put(slope,set);
-                } else {
-                    Set<Integer> set = map.get(slope);
-                    set.add(i);
-                    set.add(j);
-                    map.put(slope,set);
+                double  slope = Double.MAX_VALUE;
+                if(p2[0]-p1[0]!=0)
+                    slope = (double)(p2[1]-p1[1])/(p2[0]-p1[0]);
+                if(slopeMap.containsKey(slope)){
+                    int count= slopeMap.get(slope)+1;
+                    slopeMap.put(slope,count);
+                    max = Math.max(max,count);
+                }else{
+                    slopeMap.put(slope,1);
+                    if(max<(1))
+                        max=1;
                 }
             }
+            maxpoints= Math.max(maxpoints,max+duplicates);
         }
-        int max = 0;
-        for(Map.Entry<Double,Set<Integer>> entry: map.entrySet()) {
-            max = Math.max(max,entry.getValue().size());
-        }
-        max = Math.max(infinityCount,max);
-        return max;
+        return maxpoints+1;
     }
 }
