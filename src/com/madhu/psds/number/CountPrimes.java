@@ -3,7 +3,8 @@ package com.madhu.psds.number;
 public class CountPrimes {
     public static void main(String[] args) {
         CountPrimes countPrimes = new CountPrimes();
-        System.out.println(countPrimes.countPrimes(10));
+        System.out.println(Integer.parseInt("2"));
+       // System.out.println(countPrimes.countPrimes(10));
     }
 
     public int countPrimes(int n) {
