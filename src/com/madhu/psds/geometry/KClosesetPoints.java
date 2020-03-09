@@ -12,6 +12,6 @@ public class KClosesetPoints {
     }
 
     public int[][] kClosest(int[][] points, int K) {
-
+        return new int[][]{{}};
     }
 }
