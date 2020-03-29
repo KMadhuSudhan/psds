@@ -1,4 +1,6 @@
 package com.madhu.psds.arrays;
+//https://leetcode.com/problems/maximum-product-subarray/
+//152. Maximum Product Subarray
 
 public class MaximumProductArray {
     public static void main(String[] args) {
@@ -8,18 +10,18 @@ public class MaximumProductArray {
     }
 
     public int maxProduct(int[] nums) {
-        int max = 1;
-        int length = nums.length;
-        int maxSoFar = 0;
-        for (int i =0;i<length;i++) {
-            max = max * nums[i];
-            if(maxSoFar < max) {
-                maxSoFar = max;
+        int res = nums[0], firstNeg = 1;
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = (i == 0 || nums[i-1] == 0) ? nums[i] : nums[i] * nums[i-1];
+            res = Math.max(res, nums[i]);
+            if (nums[i] != 0) {
+                if (nums[i] < 0) {
+                    if (firstNeg > 0) firstNeg = nums[i];
+                    else res = Math.max(res, nums[i]/firstNeg);
+                }
             }
-            if(max < 0) {
-                max = 1;
-            }
+            else firstNeg = 1;
         }
-        return maxSoFar;
+        return res;
     }
 }
