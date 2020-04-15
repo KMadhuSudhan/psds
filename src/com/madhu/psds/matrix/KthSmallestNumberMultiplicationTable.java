@@ -3,40 +3,31 @@ package com.madhu.psds.matrix;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class KthSmallestElementInSortedMatrix {
+public class KthSmallestNumberMultiplicationTable {
     public static void main(String[] args) {
-        int[][] matrix = {
-                {1,  5,  9},
-                {10, 11, 13},
-                {12, 13, 15}
-        };
-        PriorityQueue pq = new PriorityQueue();
-
-        pq.offer(1);
-        pq.offer(-1);
-        pq.offer(0);
-        System.out.println(pq.peek());
-        KthSmallestElementInSortedMatrix kthSmallestElementInSortedMatrix = new KthSmallestElementInSortedMatrix();
-        kthSmallestElementInSortedMatrix.kthSmallest(matrix,8);
-
-
+        KthSmallestNumberMultiplicationTable kthSmallestNumberMultiplicationTable = new KthSmallestNumberMultiplicationTable();
+        kthSmallestNumberMultiplicationTable.findKthNumber(3,3,5);
     }
-    public int kthSmallest(int[][] matrix, int k) {
+    public int findKthNumber(int m, int n, int k) {
         PriorityQueue<Node> priorityQueue = new PriorityQueue<>(new Comparator<Node>() {
             @Override
-            public int compare(Node o1, Node o2) {
+            public int compare(Node o1,Node o2) {
                 return Integer.compare(o1.val ,o2.val);
             }
         });
 
-        int rows = matrix.length;
-        int columns = matrix[0].length;
+        int[][] matrix = new int[m][n];
+        for (int i=1;i<=m;i++) {
+            for (int j=1;j<=n;j++) {
+                matrix[i-1][j-1] = i * j;
+            }
+        }
         Node node = new Node();
         node.val = matrix[0][0];
         node.i  = 0;
         node.j  = 0;
         priorityQueue.add(node);
-        boolean[][] visited = new boolean[rows][columns];
+        boolean[][] visited = new boolean[m][n];
         visited[0][0] = true;
         int[][] directions = {
                 {0,1},
@@ -51,7 +42,7 @@ public class KthSmallestElementInSortedMatrix {
             for(int[] direction: directions) {
                 int nextI = i + direction[0];
                 int nextJ = j + direction[1];
-                if(nextI >= rows || nextJ >= columns || visited[nextI][nextJ]) continue;
+                if(nextI >= m || nextJ >= n || visited[nextI][nextJ]) continue;
                 Node next = new Node();
                 next.val = matrix[nextI][nextJ];
                 next.i = nextI;
