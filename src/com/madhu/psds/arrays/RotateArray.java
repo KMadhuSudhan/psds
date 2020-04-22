@@ -1,4 +1,6 @@
 package com.madhu.psds.arrays;
+//https://leetcode.com/problems/rotate-array/submissions/
+//189. Rotate Array
 
 public class RotateArray {
     public static void main(String[] args) {
@@ -10,11 +12,12 @@ public class RotateArray {
 
     public void rotate(int[] nums, int k) {
         int length = nums.length;
-        k = k % nums.length;
-        if (k == 0 || nums.length == 0) return;
-        reverse(nums, 0, k );
-        reverse(nums, k, length );
-        reverse(nums, 0, length );
+        k = k % length;
+        if(k == 0 || length == 0 ) return;
+        k = length - k;
+        reverse(nums, 0, k-1);
+        reverse(nums, k, length-1);
+        reverse(nums, 0, length-1);
     }
 
     public void reverse(int[] nums, int low, int high) {

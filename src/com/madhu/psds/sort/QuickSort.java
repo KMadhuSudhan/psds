@@ -17,24 +17,51 @@ public class QuickSort {
       }
     }
 
-    public int partition(int[] array,int lb,int ub) {
-        int pivot = lb;
-        int start = lb;
-        int end = ub;
-        while (start < end ) {
-            while (array[start] < array[pivot]){
-                start++;
-            }
-            while (array[end] > array[pivot]){
-                end--;
-            }
-            if(start < end) {
-                int temp = array[end];
-                array[end] = array[pivot];
-                array[pivot] = temp;
+    int partition(int arr[], int low, int high)
+    {
+        int pivot = arr[high];
+        int i = (low-1); // index of smaller element
+        for (int j=low; j<high; j++)
+        {
+            // If current element is smaller than the pivot
+            if (arr[j] < pivot)
+            {
+                i++;
+
+                // swap arr[i] and arr[j]
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
             }
         }
-        return end;
+
+        // swap arr[i+1] and arr[high] (or pivot)
+        int temp = arr[i+1];
+        arr[i+1] = arr[high];
+        arr[high] = temp;
+
+        return i+1;
+    }
+
+    int partitionFirstPivot ( int A[],int start ,int end) {
+        int i = start + 1;
+        int piv = A[start] ;            //make the first element as pivot element.
+        for(int j =start + 1; j <= end ; j++ )  {
+    /*rearrange the array by putting elements which are less than pivot
+       on one side and which are greater that on other. */
+
+            if ( A[ j ] < piv) {
+                int temp1 = A[ i ];
+                A[ i ] = A[ j];
+                A[ j] = temp1;
+                i += 1;
+            }
+        }
+        int temp = A[ start ];
+        A[ start ] = A[ i-1];
+        A[ i-1] = temp;
+//        swap ( A[ start ] ,A[ i-1 ] ) ;  //put the pivot element in its proper place.
+        return i-1;                      //return the position of the pivot
     }
 
     public  void printSortedArray(int[] array,int length) {
