@@ -2,12 +2,10 @@ package com.madhu.psds.trees;
 
 import java.util.Stack;
 
-class Index {
-    int index = 0;
-}
-
 public class ConstructBSTFromPreOrder {
-
+    class Index {
+        int index = 0;
+    }
     public static void main(String[] args) {
         int[] nodes = {10, 5, 1, 7, 40, 50};
         ConstructBSTFromPreOrder constructBSTFromPreOrder = new ConstructBSTFromPreOrder();
