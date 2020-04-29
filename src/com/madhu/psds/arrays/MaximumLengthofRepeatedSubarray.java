@@ -4,33 +4,24 @@ package com.madhu.psds.arrays;
 
 public class MaximumLengthofRepeatedSubarray {
     public static void main(String[] args) {
-        int[] a = {1,2,3,2,1};
-        int[] b = {3,2,1,4,7};
+        int[] a = {0,0,0,0,0,0,1,0,0,0};
+        int[] b = {0,0,0,0,0,0,0,1,0,0};
         MaximumLengthofRepeatedSubarray maximumLengthofRepeatedSubarray = new MaximumLengthofRepeatedSubarray();
         System.out.println(maximumLengthofRepeatedSubarray.findLength(a,b));
     }
     public int findLength(int[] A, int[] B) {
-       int lengthA = A.length;
-       int lengthB = B.length;
-       int i=0;
-       int j=0;
-       int size = 0;
-       int maxSize = 0;
-       while (i<lengthA && j < lengthB) {
-           while(i<lengthA && A[i] != B[j]) {
-               i++;
-           }
-           while(j<lengthB && A[i] != B[j]) {
-               i++;
-           }
+        int ans = 0;
 
-           while (i<lengthA && j < lengthB && A[i] == B[j]) {
-                size++;
-                i++;
-                j++;
-           }
-           maxSize = Math.max(size,maxSize);
-       }
-       return maxSize;
+        int[][] dp = new int[A.length + 1][B.length + 1];
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < B.length; j++) {
+                if (A[i] == B[j]) {
+                    dp[i + 1][j + 1] = dp[i][j] + 1;
+                    ans = Math.max(ans, dp[i + 1][j + 1]);
+                }
+            }
+        }
+
+        return ans;
     }
 }

@@ -7,7 +7,9 @@ public class DiagonalTraverse {
     public static void main(String[] args) {
         DiagonalTraverse diagonalTraverse = new DiagonalTraverse();
         int[][] matrix = {
-                {2,3},
+                {7},
+                {9},
+                {6}
         };
         System.out.println(diagonalTraverse.findDiagonalOrder(matrix));
     }
@@ -38,6 +40,7 @@ public class DiagonalTraverse {
             else {
                 if(i+1<M) result[++count]=matrix[++i][j];
             }
+
             //Keep walking down left until it can't move
             while(i+1<M&&j-1>=0){ result[++count]=matrix[++i][--j];}
             //Take a step down，or go right if it can't move to down(out of index)

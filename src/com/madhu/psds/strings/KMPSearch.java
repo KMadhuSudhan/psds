@@ -31,15 +31,10 @@ public class KMPSearch {
             }
         }
 
-        for(i=0;i<patternTable.length;i++) {
-            System.out.print(" " + patternTable[i]);
-        }
-
         i=0;
         j=0;
         int startIndex = 0;
         while (i<strLength && j < patternLength) {
-            System.out.println("i,j " + i + "," + j);
            if(strChars[i] == patternChars[j]) {
                i++;
                j++;
