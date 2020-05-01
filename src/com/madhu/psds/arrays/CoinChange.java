@@ -2,9 +2,7 @@ package com.madhu.psds.arrays;
 //https://leetcode.com/problems/coin-change/submissions/
 //322. Coin Change
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class CoinChange {
     public static void main(String[] args) {

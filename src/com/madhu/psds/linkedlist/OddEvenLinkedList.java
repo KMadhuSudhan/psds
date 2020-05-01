@@ -29,6 +29,7 @@ public class OddEvenLinkedList {
             prev = nextNext;
             nextNext = nextNext.next.next;
         }
+
         temp.next = prev.next;
         temp = prev.next;
         prev.next = nextNext;
@@ -39,6 +40,7 @@ public class OddEvenLinkedList {
         } else {
             temp.next = null;
         }
+
         return head;
     }
 }
