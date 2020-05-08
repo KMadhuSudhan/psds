@@ -7,8 +7,8 @@ import java.util.Stack;
 public class BasciCalculatorii {
     public static void main(String[] args) {
         BasciCalculatorii basciCalculatorii = new BasciCalculatorii();
-        String str = "3+2*2";
-        basciCalculatorii.calculate(str);
+        String str = "1+11-3";
+        System.out.println(basciCalculatorii.calculate(str));
     }
     public int calculate(String s) {
         int answer = 0,num=0;
