@@ -1,5 +1,8 @@
 package com.madhu.psds.strings;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ReverseWords {
     public static void main(String[] args) {
         String sentence = "Let's take LeetCode contest";
@@ -8,24 +11,21 @@ public class ReverseWords {
     }
 
     public String reverseWords(String s) {
-        String[] wordsArray = s.split(" ");
-        int length = wordsArray.length;
-        for (int i = 0; i < length; i++) {
-            wordsArray[i] = reverse(wordsArray[i].trim());
-        }
-        return String.join(" ",wordsArray);
-    }
+        String input = s.trim();
+        String[] words = input.split(" ");
+        List<String> newWords = new ArrayList();
 
-    public String reverse(String s) {
-        char[] word = s.toCharArray();
-        int i = 0, j = word.length - 1;
-        while (i < j) {
-            char temp = word[i];
-            word[i] = word[j];
-            word[j] = temp;
-            i++;
-            j--;
+        for(int i=0;i<words.length;i++) {
+            if(words[i].length() == 0) continue;
+            newWords.add(words[i]);
         }
-        return String.valueOf(word);
+
+        StringBuilder sb = new StringBuilder();
+        for(int i=newWords.size()-1;i>0;i--) {
+            sb.append(newWords.get(i));
+            sb.append(" ");
+        }
+        if(newWords.size() > 0 && newWords.get(0).length() > 0) sb.append(newWords.get(0));
+        return sb.toString();
     }
 }

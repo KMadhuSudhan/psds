@@ -9,35 +9,35 @@ public class UglyNumberIII {
     }
 
     public int nthUglyNumber(int n, int a, int b, int c) {
-        if (n <= 0) return 0;
-        int[] arr = new int[n];
-        int i=0;
-        arr[i] = a;
-        int aFactorIndex = 0;
-        for(i=1;arr[i-1] * arr[i-1]<b;i++) {
-            arr[i] = arr[i-1] * arr[i-1];
-        }
-        int bFactorIndex = i;
-        arr[i++] = b;
+        long  min=Math.min(Math.min(a,b),c);
+        long r=1;
+        long p=min*n;
 
-        for(int k=0;k<i;k++) {
-            for (int j =0;j<i && arr[k]*arr[j] < c;j++) {
-                arr[i++] = arr[k]*arr[j];
-            }
+        while(r<=p){
+            long m=r+((p-r)/2);
+            long s=count(m,a,b,c);
+            if(s==n)return (int)Math.max(Math.max(m/a*a,m/b*b),m/c*c);
+            else if(s<n) r=m+1;
+            else p=m-1;
+
         }
-        int cFactorIndex = i;
-        if(n<=i) return arr[i-1];
-        arr[i++] = c;
-        for (int k = i; k < n; k++) {
-            int aFactor = a * arr[aFactorIndex];
-            int bFactor = b * arr[bFactorIndex];
-            int cFactor = c * arr[cFactorIndex];
-            int minFactor = Math.min(aFactor, Math.min(bFactor, cFactor));
-            arr[i] = minFactor;
-            if (aFactor == minFactor) aFactorIndex++;
-            if (bFactor == minFactor) bFactorIndex++;
-            if (cFactor == minFactor) cFactorIndex++;
-        }
-        return arr[n - 1];
+        throw new IllegalArgumentException("n is too large");
+    }
+
+    long count(long N,int A,int B,int C){
+        return N/A+N/B+N/C-countIntersection(N,A,B,A)-countIntersection(N,A,C,A)-countIntersection(N,B,C,B)+countIntersection(N,A,B,C);
+    }
+
+    // |SA ∩ SB ∩ SC|, when A==C,|SA ∩ SB ∩ SC| = |SA ∩ SB|
+    long countIntersection(long N,int A,int B,int C){
+        int Bx=B/gcd(A,B);
+        int Cx=C/gcd(A,C);
+        int Dx=gcd(Bx,Cx);
+        long F=(long)A*Bx*Cx;
+        return Dx*N/F;
+    }
+
+    int gcd(int x,int y){
+        return y==0?x:gcd(y,x%y);
     }
 }
